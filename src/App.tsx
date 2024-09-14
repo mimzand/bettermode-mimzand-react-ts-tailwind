@@ -28,6 +28,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div> Test graphQL </div>
+
+      <button class="btn btn-primary">Button</button>
     </ApolloProvider>
   );
 }
