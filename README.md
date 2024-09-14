@@ -1,6 +1,6 @@
 Here's a template for your `README.md` file, tailored for a React TypeScript project using Tailwind CSS and Vite:
 
-```markdown
+````markdown
 # Project Name
 
 A brief description of your project, its purpose, and what it accomplishes.
@@ -24,15 +24,20 @@ To install and run the project locally, follow these steps:
    ```bash
    git clone https://github.com/your-username/project-name.git
    ```
+````
+
 2. Navigate to the project directory:
    ```bash
    cd project-name
    ```
 3. Install dependencies:
+
    ```bash
    npm install
    ```
+
    or
+
    ```bash
    yarn install
    ```
@@ -122,6 +127,8 @@ Contributions are welcome! Please follow these steps to contribute:
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
+
 ```
 
 Feel free to customize the template with project-specific information!
+```
