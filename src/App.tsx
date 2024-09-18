@@ -1,36 +1,25 @@
-import { onError } from "@apollo/client/link/error";
-import {
-  from,
-  HttpLink,
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-} from "@apollo/client";
+import useGraphQL, { GraphQlContext } from "./apis/useGraphQL";
+import { ToastContainer } from "react-toastify";
 
-const errorLink = onError(({ graphQLErrors }) => {
-  if (graphQLErrors)
-    graphQLErrors.map(({ message }) => {
-      alert(`Graphql error ${message}`);
-    });
-});
-
-const link = from([
-  errorLink,
-  new HttpLink({ uri: "http://localhost:6969/graphql" }),
-]);
-
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: link,
-});
+import "react-toastify/dist/ReactToastify.css";
+import Posts from "./Posts";
 
 function App() {
-  return (
-    <ApolloProvider client={client}>
-      <div> Test graphQL </div>
+  const gqlc = useGraphQL();
 
-      <button class="btn btn-primary">Button</button>
-    </ApolloProvider>
+  return (
+    <>
+      <GraphQlContext.Provider value={gqlc}>
+        <Posts />
+        <ToastContainer
+          position="bottom-center"
+          theme="colored"
+          draggable
+          pauseOnHover
+          hideProgressBar={false}
+        />
+      </GraphQlContext.Provider>
+    </>
   );
 }
 
