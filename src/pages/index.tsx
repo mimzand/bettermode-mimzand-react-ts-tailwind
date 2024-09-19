@@ -9,7 +9,7 @@ export default function Index() {
 
   const getToken = useCallback(() => {
     Api.Auth.authMember().then((result) => {
-      if (result) navigate("/posts");
+      if (result) navigate("/stories");
     });
   }, [Api.Auth, navigate]);
 

@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 
 import Index from "./pages";
 import Auth from "./pages/auth";
-import Posts from "./pages/posts";
+import Stories from "./pages/stories";
 
 const router = createBrowserRouter([
   {
@@ -18,8 +18,8 @@ const router = createBrowserRouter([
     element: <Auth />,
   },
   {
-    path: "/posts",
-    element: <Posts />,
+    path: "/stories",
+    element: <Stories />,
   },
 ]);
 
@@ -29,7 +29,9 @@ function App() {
   return (
     <>
       <GraphQlContext.Provider value={gqlc}>
-        <RouterProvider router={router} />
+        <div className="container mx-auto max-w-max">
+          <RouterProvider router={router} />
+        </div>
         <ToastContainer
           position="bottom-center"
           theme="colored"
