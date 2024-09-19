@@ -16,8 +16,10 @@ export default {
       error.message ||
       "Unknown error";
     toast.error("Server error: " + errorMessage);
-    if (!noRedirect && error.response?.status == 401) {
-      // remove auth token and redirect
+
+    if (!noRedirect && error.cause?.status == 403) {
+      localStorage.removeItem("access_token");
+      window.location.href = "/auth";
     }
   },
 };

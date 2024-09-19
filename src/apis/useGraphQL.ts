@@ -16,12 +16,12 @@ export default function useGraphQL() {
 
   useEffect(() => {
     const httpLink = createHttpLink({
-      uri: import.meta.env.VITE_API_HOST,
+      uri:
+        import.meta.env.VITE_GRAPHQL_ENDPOINT || "https://api.bettermode.com/",
     });
 
     const authLink = setContext((_, { headers }) => {
-      const token =
-        localStorage.getItem("access_token") || import.meta.env.VITE_AUTH_TOKEN;
+      const token = localStorage.getItem("access_token");
 
       return {
         headers: {
