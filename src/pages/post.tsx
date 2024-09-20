@@ -1,5 +1,6 @@
 import LoadingOverlay from "../components/loading-overlay";
 import PostDetailCard from "../components/post-detail-card";
+import useErrorHandler from "../api/useErrorHandler";
 import { Link, useParams } from "react-router-dom";
 import PageTitle from "../components/page-title";
 import { useEffect, useState } from "react";
@@ -11,9 +12,10 @@ function Post() {
 
   const { postSlug } = useParams();
   const postId = postSlug?.substring(postSlug.lastIndexOf("-") + 1);
-  const { data, loading } = useQuery(Api.Queries.Posts.getPostQuery, {
+  const { data, loading, error } = useQuery(Api.Queries.Posts.getPostQuery, {
     variables: { id: postId },
   });
+  useErrorHandler(error);
 
   const post = data?.post;
 

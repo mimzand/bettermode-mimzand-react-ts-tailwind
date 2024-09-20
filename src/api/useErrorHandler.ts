@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 export default function useErrorHandler(error: any, noRedirect?: boolean) {
   return useEffect(() => {

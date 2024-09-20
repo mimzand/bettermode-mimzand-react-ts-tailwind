@@ -1,11 +1,11 @@
+import { useEffect, useState } from "react";
+import { DocumentNode } from "graphql";
 import {
   ApolloError,
   OperationVariables,
   useLazyQuery,
   useQuery,
 } from "@apollo/client";
-import { DocumentNode } from "graphql";
-import { useEffect, useState } from "react";
 
 export default function usePagination(
   query: DocumentNode,

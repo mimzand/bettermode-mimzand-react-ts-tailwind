@@ -1,13 +1,13 @@
-import "react-toastify/dist/ReactToastify.css";
-
-import Index from "./pages";
-import Auth from "./pages/auth";
-import Post from "./pages/post";
-import Stories from "./pages/stories";
-import apolloClient from "./api/apolloClient";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ApolloProvider } from "@apollo/client";
 import { ToastContainer } from "react-toastify";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import apolloClient from "./api/apolloClient";
+import Stories from "./pages/stories";
+import Auth from "./pages/auth";
+import Post from "./pages/post";
+import Index from "./pages";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {

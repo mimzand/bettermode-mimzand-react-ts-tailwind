@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import Like from "./like";
 
 function PostDetailCard({ post }: { post: any }) {
   const timeAgo = useCallback((dateString: string) => {
@@ -77,6 +78,19 @@ function PostDetailCard({ post }: { post: any }) {
               )?.replace(/(<? *script)/gi, "illegalscript"),
             }}
           />
+
+          <div className="card-actions justify-start items-center space-x-2">
+            <Like
+              postId={post?.id}
+              active={
+                post?.reactions &&
+                post?.reactions?.length &&
+                post?.reactions[0]?.reaction == "like-it" &&
+                post?.reactions[0]?.reacted == true
+              }
+              total={post?.reactionsCount}
+            />
+          </div>
         </div>
       </div>
     </>

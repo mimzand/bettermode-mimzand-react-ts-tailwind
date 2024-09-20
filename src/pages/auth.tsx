@@ -1,8 +1,8 @@
 import LoadingOverlay from "../components/loading-overlay";
+import useErrorHandler from "../api/useErrorHandler";
 import { useQuery } from "@apollo/client";
 import { useEffect } from "react";
 import Api from "../api";
-import useErrorHandler from "../api/useErrorHandler";
 
 export default function Auth() {
   const { data, error } = useQuery(Api.Queries.Auth.getAccessTokenQuery, {

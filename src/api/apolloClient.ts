@@ -1,11 +1,14 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
+if (import.meta.env.VITE_AUTH_TOKEN)
+  localStorage.setItem("access_token", import.meta.env.VITE_AUTH_TOKEN);
 const httpLink = createHttpLink({
   uri: import.meta.env.VITE_GRAPHQL_ENDPOINT || "https://api.bettermode.com/",
 });
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem("access_token");
+  const token =
+    import.meta.env.VITE_AUTH_TOKEN || localStorage.getItem("access_token");
   return {
     headers: {
       ...headers,
