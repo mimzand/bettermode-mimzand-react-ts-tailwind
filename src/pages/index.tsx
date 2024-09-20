@@ -1,21 +1,18 @@
-import { useCallback, useEffect } from "react";
 import LoadingOverlay from "../components/loading-overlay";
+import ErrorHandler from "../api/errorHandler";
 import { useNavigate } from "react-router-dom";
-import useApi from "../apis/UseApi";
+import { useQuery } from "@apollo/client";
+import { useEffect } from "react";
+import Api from "../api";
 
 export default function Index() {
-  const Api = useApi();
   const navigate = useNavigate();
-
-  const getToken = useCallback(() => {
-    Api.Auth.authMember().then((result) => {
-      if (result) navigate("/stories");
-    });
-  }, [Api.Auth, navigate]);
+  const { data, error } = useQuery(Api.Queries.Auth.authMemberQuery);
 
   useEffect(() => {
-    getToken();
-  }, [getToken]);
+    if (error) ErrorHandler(error);
+    else if (data) navigate("/stories");
+  }, [data, error, navigate]);
 
   return <LoadingOverlay />;
 }

@@ -1,12 +1,12 @@
 import "react-toastify/dist/ReactToastify.css";
 
-import useGraphQL, { GraphQlContext } from "./apis/useGraphQL";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-
 import Index from "./pages";
 import Auth from "./pages/auth";
 import Stories from "./pages/stories";
+import apolloClient from "./api/apolloClient";
+import { ApolloProvider } from "@apollo/client";
+import { ToastContainer } from "react-toastify";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -24,11 +24,9 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const gqlc = useGraphQL();
-
   return (
     <>
-      <GraphQlContext.Provider value={gqlc}>
+      <ApolloProvider client={apolloClient}>
         <div className="container mx-auto max-w-max">
           <RouterProvider router={router} />
         </div>
@@ -39,7 +37,7 @@ function App() {
           pauseOnHover
           hideProgressBar={false}
         />
-      </GraphQlContext.Provider>
+      </ApolloProvider>
     </>
   );
 }

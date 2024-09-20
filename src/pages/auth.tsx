@@ -1,19 +1,24 @@
-import { useCallback, useEffect } from "react";
 import LoadingOverlay from "../components/loading-overlay";
-import useApi from "../apis/UseApi";
+import ErrorHandler from "../api/errorHandler";
+import { useQuery } from "@apollo/client";
+import { useEffect } from "react";
+import Api from "../api";
 
 export default function Auth() {
-  const Api = useApi();
-
-  const getToken = useCallback(async () => {
-    await Api.Auth.getAccessToken().then((response) => {
-      if (response) window.location.href = "/";
-    });
-  }, [Api]);
+  const { data, error } = useQuery(Api.Queries.Auth.getAccessTokenQuery, {
+    variables: {
+      networkDomain:
+        import.meta.env.VITE_NETWORK_DOMAIN || "mimzand.bettermode.io",
+    },
+  });
 
   useEffect(() => {
-    getToken();
-  }, [getToken]);
+    if (error) ErrorHandler(error);
+    else if (data) {
+      localStorage.setItem("access_token", data?.tokens?.accessToken || "");
+      window.location.href = "/";
+    }
+  }, [data, error]);
 
   return <LoadingOverlay />;
 }
