@@ -2,6 +2,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Index from "./pages";
 import Auth from "./pages/auth";
+import Post from "./pages/post";
 import Stories from "./pages/stories";
 import apolloClient from "./api/apolloClient";
 import { ApolloProvider } from "@apollo/client";
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/stories",
     element: <Stories />,
+  },
+  {
+    path: "/stories/post/:postSlug",
+    element: <Post />,
   },
 ]);
 

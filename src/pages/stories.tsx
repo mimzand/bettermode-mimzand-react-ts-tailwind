@@ -3,6 +3,7 @@ import LoadingOverlay from "../components/loading-overlay";
 import PostCardList from "../components/post-card-list";
 import useErrorHandler from "../api/useErrorHandler";
 import usePagination from "../api/usePagination";
+import PageTitle from "../components/page-title";
 import PostCard from "../components/post-card";
 import { useQuery } from "@apollo/client";
 import Api from "../api";
@@ -49,6 +50,7 @@ function Stories() {
 
   return (
     <>
+      <PageTitle title="Stories - BetterMode" />
       <div className="w-full flex flex-col max-w-full md:max-w-8xl self-center space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 py-3 sm:py-3.5 md:py-4 lg:py-5 px-0 sm:px-0 md:px-0 lg:px-0">
         <PostListHeader title="Top Story" subtitle="Top story of this week" />
         <PostCard post={featuredPostsData?.posts?.nodes[0]} featured />
