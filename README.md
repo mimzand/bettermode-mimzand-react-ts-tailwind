@@ -1,13 +1,11 @@
-Here's a template for your `README.md` file, tailored for a React TypeScript project using Tailwind CSS and Vite:
+# bettermode-mimzand-react-ts-tailwind
 
-````markdown
-# Project Name
-
-A brief description of your project, its purpose, and what it accomplishes.
+This project was developed as part of a hiring challenge for BetterMode. It includes the implementation of the post list, post detail page, and post like functionality.
 
 ## Table of Contents
 
 - [Installation](#installation)
+- [Environment Variables](#environment-variables)
 - [Technologies](#technologies)
 - [Features](#features)
 - [Project Structure](#project-structure)
@@ -22,21 +20,13 @@ To install and run the project locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/project-name.git
+   git clone git@github.com:mimzand/bettermode-mimzand-react-ts-tailwind.git
    ```
-````
-
 2. Navigate to the project directory:
    ```bash
-   cd project-name
+   cd bettermode-mimzand-react-ts-tailwind
    ```
 3. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-   or
 
    ```bash
    yarn install
@@ -44,12 +34,24 @@ To install and run the project locally, follow these steps:
 
 4. Start the development server:
    ```bash
-   npm run dev
-   ```
-   or
-   ```bash
    yarn dev
    ```
+
+## Environment Variables
+
+The project uses environment variables configured in a `.env` file. Below are the keys required:
+
+- `VITE_GRAPHQL_ENDPOINT`: The URL for the GraphQL endpoint (default: `https://api.example.com/`).
+- `VITE_NETWORK_DOMAIN`: The network domain address (default: `https://betterhunt-sj1n88tv.bettermode.io/`).
+- `VITE_AUTH_TOKEN`: Optional. Set this value if you want to log in as an authenticated user.
+
+Make sure to create a `.env` file in the root of your project and set the appropriate values.
+
+```bash
+VITE_GRAPHQL_ENDPOINT=https://api.example.com/
+VITE_NETWORK_DOMAIN=https://betterhunt-sj1n88tv.bettermode.io/
+VITE_AUTH_TOKEN=your-auth-token-here
+```
 
 ## Technologies
 
@@ -65,17 +67,17 @@ This project is built with the following technologies:
 - Fast development with Vite's hot module replacement.
 - TypeScript for static type checking.
 - Tailwind CSS for flexible, responsive styling.
-- Component-based architecture using React.
+- Functional-based architecture using React.
 
 ## Project Structure
 
 Here's a brief overview of the project's structure:
 
 ```
-project-name/
+bettermode-mimzand-react-ts-tailwind/
 ├── public/             # Static assets
 ├── src/
-│   ├── assets/         # Images, fonts, and other static files
+│   ├── api/            # GraphQl queries, mutations and all related things
 │   ├── components/     # Reusable UI components
 │   ├── pages/          # Page components
 │   ├── App.tsx         # Root component
@@ -93,27 +95,30 @@ project-name/
 Run the development server with:
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 Build for production:
 
 ```bash
-npm run build
+yarn build
 ```
 
 Preview the production build:
 
 ```bash
-npm run preview
+yarn preview
 ```
 
 ## Available Scripts
 
-- `npm run dev` or `yarn dev`: Starts the development server.
-- `npm run build` or `yarn build`: Builds the app for production.
-- `npm run preview` or `yarn preview`: Previews the production build.
-- `npm run lint` or `yarn lint`: Runs ESLint to lint your code.
+`yarn dev`: Starts the development server.
+
+`yarn build`: Builds the app for production.
+
+`yarn preview`: Previews the production build.
+
+`yarn lint`: Runs ESLint to lint your code.
 
 ## Contributing
 

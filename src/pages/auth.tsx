@@ -8,7 +8,8 @@ export default function Auth() {
   const { data, error } = useQuery(Api.Queries.Auth.getAccessTokenQuery, {
     variables: {
       networkDomain:
-        import.meta.env.VITE_NETWORK_DOMAIN || "mimzand.bettermode.io",
+        import.meta.env.VITE_NETWORK_DOMAIN ||
+        "betterhunt-sj1n88tv.bettermode.io",
     },
   });
   useErrorHandler(error);
