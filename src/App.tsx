@@ -27,7 +27,7 @@ function App() {
   return (
     <>
       <ApolloProvider client={apolloClient}>
-        <div className="container mx-auto max-w-max">
+        <div className="container mx-auto max-w-screen-lg">
           <RouterProvider router={router} />
         </div>
         <ToastContainer

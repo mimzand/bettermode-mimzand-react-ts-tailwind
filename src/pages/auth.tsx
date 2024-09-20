@@ -1,8 +1,8 @@
 import LoadingOverlay from "../components/loading-overlay";
-import ErrorHandler from "../api/errorHandler";
 import { useQuery } from "@apollo/client";
 import { useEffect } from "react";
 import Api from "../api";
+import useErrorHandler from "../api/useErrorHandler";
 
 export default function Auth() {
   const { data, error } = useQuery(Api.Queries.Auth.getAccessTokenQuery, {
@@ -11,14 +11,14 @@ export default function Auth() {
         import.meta.env.VITE_NETWORK_DOMAIN || "mimzand.bettermode.io",
     },
   });
+  useErrorHandler(error);
 
   useEffect(() => {
-    if (error) ErrorHandler(error);
-    else if (data) {
+    if (data) {
       localStorage.setItem("access_token", data?.tokens?.accessToken || "");
       window.location.href = "/";
     }
-  }, [data, error]);
+  }, [data]);
 
   return <LoadingOverlay />;
 }
